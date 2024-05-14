@@ -1,0 +1,35 @@
+.mq-icon-clear {
+    @apply hidden !important;
+}
+
+.mq-input {
+    @apply h-fit rounded-md border-[#d9d9d9] !important;
+}
+
+.mq-place-search {
+    @apply z-[9999] w-full !important;
+}
+
+.mq-result.mq-cursor:hover {
+    @apply bg-gray-100 !important;
+}
+
+.mq-result {
+    @apply grid grid-cols-10 grid-rows-2 items-center gap-1 overflow-hidden rounded-lg p-2 !important;
+}
+
+.mq-result-icon {
+    @apply col-span-1 row-span-2 flex w-fit items-center justify-center pb-1 pl-1 text-center !important;
+}
+
+.mq-name {
+    @apply col-span-9 m-0 p-0 text-sm !important;
+}
+
+.mq-address {
+    @apply col-span-9 m-0 p-0 text-xs text-gray-400 !important;
+}
+
+.mq-dropdown-menu {
+    @apply z-[9999] mt-1 w-full rounded-md bg-white shadow-md !important;
+}
