@@ -7,8 +7,9 @@ import { useMenuActions } from "../hooks/useMenuActions"
 import { IRoom } from "@/interfaces/room.interface"
 import { ROOM_STATUS, ROOM_STATUS_COLORS, RoomStatusType } from "@/utils/constants/GlobalConst"
 import { convertDate, formatStatus } from "@/utils/helpers"
+import { INews } from "@/interfaces/news.interface"
 
-const TableManageRooms = ({ rooms }: { rooms: IRoom[] }) => {
+const TableManageNews = ({ news }: { news: INews[] }) => {
     const getMenuActions = useMenuActions()
 
     const columns: ColumnsType<IRoom> = [
@@ -23,15 +24,6 @@ const TableManageRooms = ({ rooms }: { rooms: IRoom[] }) => {
             title: <span className="font-bold">Room Name</span>,
             key: "roomName",
             width: "18%",
-            render: (record: IRoom) => {
-                const firstImage = record.images?.[0] as string
-                return (
-                    <div className="flex items-center">
-                        <img className="h-8 w-8 rounded-full" src={firstImage} alt={record.roomName} />
-                        <span className="ml-2 text-sm font-semibold">{record.roomName}</span>
-                    </div>
-                )
-            }
         },
         {
             title: <span className="font-bold">Area</span>,

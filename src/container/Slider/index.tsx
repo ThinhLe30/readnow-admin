@@ -5,14 +5,14 @@ import ArrowCircle from "../../assets/icons/ArrowCircle"
 import { useNavigate } from "react-router-dom"
 import { SITE_MAP } from "@/utils/constants/Path"
 import { FaRegUser } from "react-icons/fa"
-import { BiHomeAlt, BiStats } from "react-icons/bi"
+import { BiHomeAlt } from "react-icons/bi"
 import Logo from "@/components/Logo"
 import { ROLE } from "@/utils/constants/GlobalConst"
 import "./style.css"
-import { MdLogout, MdOutlinePayment } from "react-icons/md"
-import Button from "@/pages/home/room-detail/components/Button"
+import { MdLogout } from "react-icons/md"
+import Button from "@/components/Button"
 import { TbHomeCog } from "react-icons/tb"
-import { LuClipboardSignature, LuLayoutDashboard } from "react-icons/lu"
+
 import useAuth from "@/hooks/useAuth"
 
 type MenuItem = Required<MenuProps>["items"][number]
@@ -40,14 +40,7 @@ const Slider = () => {
 
     let items: MenuProps["items"] = [
         { type: "divider" },
-
-        getItem(`${isExpanding ? "Accounts" : ""}`, "users", <FaRegUser className="h-5 w-5" />),
-        getItem(`${isExpanding ? "Room Blocks" : ""}`, "blocks", <BiHomeAlt className="h-5 w-5" />),
-        getItem(`${isExpanding ? "Rentals" : ""}`, "rentals", <LuClipboardSignature className="h-5 w-5" />),
-        getItem(`${isExpanding ? "Payments" : ""}`, "payments", <MdOutlinePayment className="h-5 w-5" />),
-        getItem(`${isExpanding ? "Utilities" : ""}`, "utilities", <TbHomeCog className="h-5 w-5" />),
-        getItem(`${isExpanding ? "Transactions" : ""}`, "transactions", <BiStats className="h-5 w-5" />),
-        getItem(`${isExpanding ? "Statistic" : ""}`, "statistic", <LuLayoutDashboard className="h-5 w-5" />),
+        getItem(`${isExpanding ? "Categories" : "Categories"}`, "categories", <TbHomeCog className="h-5 w-5" />),
 
         { type: "divider" }
     ]
@@ -58,27 +51,10 @@ const Slider = () => {
 
     const onClick: MenuProps["onClick"] = (e) => {
         switch (e.key) {
-            case "users":
-                navigate(SITE_MAP.USERS)
+            case "categories":
+                navigate(SITE_MAP.CATEGORIES)
                 break
-            case "blocks":
-                navigate(SITE_MAP.BLOCKS)
-                break
-            case "utilities":
-                navigate(SITE_MAP.UTILITIES)
-                break
-            case "payments":
-                navigate(SITE_MAP.PAYMENTS)
-                break
-            case "rentals":
-                navigate(SITE_MAP.RENTALS)
-                break
-            case "transactions":
-                navigate(SITE_MAP.TRANSACTIONS)
-                break
-            case "statistic":
-                navigate(SITE_MAP.STATISTICS)
-                break
+
             default:
                 break
         }
