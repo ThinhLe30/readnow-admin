@@ -22,6 +22,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.3",
     "@react-oauth/google": "^0.11.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/antd": "^1.0.0",
     "@types/draft-js": "^0.11.18",
     "@types/leaflet.awesome-markers": "^2.0.28",
     "@types/react-html-parser": "^2.0.6",
