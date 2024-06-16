@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { VscSignIn } from "react-icons/vsc";
 import { HiLogin } from "react-icons/hi";
 import { AvatarDefault } from "@/assets/images";
-import { ItemType } from "antd/es/menu/hooks/useItems";
 import useAuth from "@/hooks/useAuth";
 import "./style.css";
+import { ItemType } from "antd/es/menu/hooks/useItems";
 
 const UserMenu = () => {
   const { userInfo, role, isAuth } = useAuth();
