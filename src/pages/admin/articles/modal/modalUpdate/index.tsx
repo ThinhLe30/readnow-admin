@@ -63,8 +63,12 @@ const ModalUpdate = (props: IModal) => {
           title: article.title,
           description: article.description,
           publishedAt: moment(article.publishedAt),
+          summary: article.summary,
         }}
       >
+        <Form.Item className="w-full" name="summary">
+          <Input placeholder="Author" disabled={true} />
+        </Form.Item>
         <Form.Item
           className="w-full"
           name="author"
@@ -72,6 +76,7 @@ const ModalUpdate = (props: IModal) => {
         >
           <Input placeholder="Author" />
         </Form.Item>
+
         <Form.Item
           className="w-full"
           name="title"

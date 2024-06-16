@@ -1,4 +1,3 @@
-import { ICategory } from "@/interfaces/category.interface";
 import { useAppSelector } from "@/redux/hook";
 import { ColumnsType } from "antd/es/table";
 import { AlignType } from "rc-table/lib/interface";
@@ -8,7 +7,6 @@ import { FaEllipsis } from "react-icons/fa6";
 import { useGetArticleQuery } from "@/redux/services/articles/article.service";
 import { IArticle } from "@/interfaces/article.interface";
 import { useMenuActions } from "./hooks/useMenuActions";
-import Moment from "react-moment";
 const TableManageArticle = () => {
   const keyword = useAppSelector((state) => state.search.keyword);
   const { data, isLoading } = useGetArticleQuery(keyword);
@@ -44,11 +42,11 @@ const TableManageArticle = () => {
       ),
     },
     {
-      title: <span className="font-bold">Description</span>,
+      title: <span className="font-bold">Summary</span>,
       key: "description",
       width: "40%",
       render: (record: IArticle) => (
-        <span className="text-sm font-medium">{record?.description}</span>
+        <span className="text-sm font-medium">{record?.summary}</span>
       ),
     },
     {

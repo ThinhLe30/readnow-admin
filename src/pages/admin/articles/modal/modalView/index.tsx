@@ -1,7 +1,7 @@
 import { IModal } from "@/interfaces/modal.interface";
 import { Divider, Image, Typography } from "antd";
 import ReactHtmlParser from "react-html-parser";
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 import "./style.css";
 import moment from "moment";
@@ -24,7 +24,7 @@ const ModalView = (props: IModal) => {
 
       <Text italic>
         <br />
-        {article.description}
+        {article.summary}
       </Text>
 
       <Paragraph>

@@ -14,6 +14,7 @@ import contractSlice from "./features/contract/contract.slice";
 
 import { categoriesApi } from "./services/categories/categories.service";
 import { articlesApi } from "./services/articles/article.service";
+import { usersApi } from "./services/users/users.service";
 
 const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
 
   [categoriesApi.reducerPath]: categoriesApi.reducer,
   [articlesApi.reducerPath]: articlesApi.reducer,
+  [usersApi.reducerPath]: usersApi.reducer,
 
   auth: authSlice.reducer,
   search: searchSlice,
@@ -40,7 +42,8 @@ export const store = configureStore({
     authApi.middleware,
     helpApi.middleware,
     categoriesApi.middleware,
-    articlesApi.middleware
+    articlesApi.middleware,
+    usersApi.middleware
   ),
 });
 

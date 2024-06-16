@@ -4,16 +4,16 @@ import { useState } from "react";
 import ArrowCircle from "../../assets/icons/ArrowCircle";
 import { useNavigate } from "react-router-dom";
 import { SITE_MAP } from "@/utils/constants/Path";
-import { FaRegUser } from "react-icons/fa";
-import { BiHomeAlt } from "react-icons/bi";
 import Logo from "@/components/Logo";
 import { ROLE } from "@/utils/constants/GlobalConst";
 import "./style.css";
 import { MdLogout } from "react-icons/md";
 import Button from "@/components/Button";
-import { TbArticle, TbCategory2, TbHomeCog } from "react-icons/tb";
+import { TbArticle, TbCategory2, TbUser } from "react-icons/tb";
 
 import useAuth from "@/hooks/useAuth";
+import { useAppDispatch } from "@/redux/hook";
+import { logOut } from "@/redux/features/auth/auth.slice";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -37,6 +37,7 @@ const Slider = () => {
   const { role } = useAuth();
   const [isExpanding, setIsExpanding] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   let items: MenuProps["items"] = [
     { type: "divider" },
@@ -50,6 +51,11 @@ const Slider = () => {
       "articles",
       <TbArticle className="h-5 w-5" />
     ),
+    getItem(
+      `${isExpanding ? "Users" : "Users"}`,
+      "users",
+      <TbUser className="h-5 w-5" />
+    ),
 
     { type: "divider" },
   ];
@@ -61,6 +67,9 @@ const Slider = () => {
         break;
       case "articles":
         navigate(SITE_MAP.ARTICLES);
+        break;
+      case "users":
+        navigate(SITE_MAP.USERS);
         break;
 
       default:
@@ -89,7 +98,10 @@ const Slider = () => {
 
       <div className="absolute bottom-4 w-full px-2">
         <Button
-          onClick={() => navigate(SITE_MAP.INDEX)}
+          onClick={() => {
+            dispatch(logOut());
+            navigate(SITE_MAP.INDEX);
+          }}
           className="w-full rounded-xl bg-primary py-2.5 text-white shadow-md shadow-primary/60 transition duration-150 hover:shadow-md hover:shadow-primary/90"
         >
           <MdLogout className="h-5 w-5" /> {isExpanding ? "Logout" : ""}

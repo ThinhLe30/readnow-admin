@@ -4,6 +4,7 @@ export interface IArticle {
   title: string;
   description: string;
   content: string;
+  summary: string;
   imageURL: string;
   publishedAt: string;
   category?: IArticleCategory;
