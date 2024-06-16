@@ -2,7 +2,6 @@ import Title from "@/components/Modal/Title";
 import useServerMessage from "@/hooks/useServerMessage";
 import { IModal } from "@/interfaces/modal.interface";
 import { useDeleteAtricleMutation } from "@/redux/services/articles/article.service";
-import { useDeleteCategoryMutation } from "@/redux/services/categories/categories.service";
 import { Button, Spin } from "antd";
 
 const ModalDelete = (props: IModal) => {

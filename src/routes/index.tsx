@@ -21,10 +21,7 @@ const MainRoute = () => {
           <Route element={<RequireAuthAdmin />}>
             <Route index element={<Navigate to={SITE_MAP.ADMIN} replace />} />
             <Route path={SITE_MAP.ADMIN} element={<AdminPage />}>
-              <Route
-                index
-                element={<Navigate to={SITE_MAP.CATEGORIES} replace />}
-              />
+              <Route index element={<Navigate to={SITE_MAP.USERS} replace />} />
               <Route path={SITE_MAP.CATEGORIES} element={<CategoriesPage />} />
               <Route path={SITE_MAP.ARTICLES} element={<ArticlesPage />} />
               <Route path={SITE_MAP.USERS} element={<UserPage />} />

@@ -6,7 +6,6 @@ import { useAppDispatch } from "@/redux/hook";
 import { openModal } from "@/redux/features/modal/modal.slice";
 import { MODAL } from "@/utils/constants/GlobalConst";
 import { MenuProps } from "antd";
-import { useNavigate } from "react-router-dom";
 import { IArticle } from "@/interfaces/article.interface";
 
 export const useMenuActions = () => {

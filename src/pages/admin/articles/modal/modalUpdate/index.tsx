@@ -1,4 +1,13 @@
-import { Button, DatePicker, Form, Input, Select, Spin, Upload } from "antd";
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  Select,
+  Spin,
+  Upload,
+  UploadFile,
+} from "antd";
 import { IModal } from "@/interfaces/modal.interface";
 import Title from "@/components/Modal/Title";
 import TextEditor from "../../TextEditor";
@@ -18,7 +27,7 @@ const ModalUpdate = (props: IModal) => {
   const [updateArticle, { data, error, isLoading }] =
     useUpdateArticleMutation();
   useServerMessage({ data: data!, error: error });
-  const defaultFileList = [
+  const defaultFileList: UploadFile<any>[] = [
     {
       uid: "-1", // Unique identifier, negative values are reserved for default files
       name: "image", // File name

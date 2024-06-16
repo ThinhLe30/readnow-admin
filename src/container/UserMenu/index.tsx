@@ -1,15 +1,10 @@
 import { Avatar, Dropdown, MenuProps } from "antd";
-import {
-  MdOutlineAdminPanelSettings,
-  MdLogout,
-  MdOutlinePayment,
-} from "react-icons/md";
+import { MdLogout } from "react-icons/md";
 import { BiUser } from "react-icons/bi";
 import { logOut } from "@/redux/features/auth/auth.slice";
 import { useAppDispatch } from "@/redux/hook";
 import { MdOutlineMenu } from "react-icons/md";
 import { useState } from "react";
-import { ROLE } from "@/utils/constants/GlobalConst";
 import { SITE_MAP } from "@/utils/constants/Path";
 import { useNavigate } from "react-router-dom";
 import { VscSignIn } from "react-icons/vsc";
@@ -18,9 +13,6 @@ import { AvatarDefault } from "@/assets/images";
 import { ItemType } from "antd/es/menu/hooks/useItems";
 import useAuth from "@/hooks/useAuth";
 import "./style.css";
-import { FaRegHeart } from "react-icons/fa";
-import { RiVipCrownLine } from "react-icons/ri";
-import { LuClipboardSignature, LuLayoutDashboard } from "react-icons/lu";
 
 const UserMenu = () => {
   const { userInfo, role, isAuth } = useAuth();
@@ -28,6 +20,7 @@ const UserMenu = () => {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  console.log(role);
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
     switch (key) {

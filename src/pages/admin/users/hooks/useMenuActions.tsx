@@ -1,7 +1,4 @@
-import { TbEdit } from "react-icons/tb";
 import { TbTrashX } from "react-icons/tb";
-import { HiOutlineViewfinderCircle } from "react-icons/hi2";
-// import { MdOutlineBedroomChild } from "react-icons/md"
 import { useAppDispatch } from "@/redux/hook";
 import { openModal } from "@/redux/features/modal/modal.slice";
 import { MODAL } from "@/utils/constants/GlobalConst";

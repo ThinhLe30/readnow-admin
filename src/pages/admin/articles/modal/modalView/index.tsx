@@ -7,7 +7,7 @@ import "./style.css";
 import moment from "moment";
 const ModalView = (props: IModal) => {
   const { title, data: article } = props;
-
+  console.log(title);
   return (
     <Typography>
       <Title>{article.title}</Title>

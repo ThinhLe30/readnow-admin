@@ -5,7 +5,6 @@ import {
   IUserResponse,
 } from "@/interfaces/user.interface";
 import { createApiWithAuth } from "../apiWithAuth.service";
-import { ICreateCategoryRequest } from "@/interfaces/category.interface";
 
 const createUserWithAuth = createApiWithAuth("userApi", ["Users"]);
 

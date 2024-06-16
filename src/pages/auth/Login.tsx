@@ -1,17 +1,11 @@
-import { Link } from "react-router-dom";
 import { ButtonAuth, InputWithLabel } from "@/components";
 import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
-import {
-  useLoginMutation,
-  useContinueWithGGMutation,
-} from "@/redux/services/auth/auth.service";
+import { useLoginMutation } from "@/redux/services/auth/auth.service";
 import { message, Spin } from "antd";
 
 import { setCredentials } from "@/redux/features/auth/auth.slice";
 import { useAppDispatch } from "@/redux/hook";
-import { useGoogleLogin } from "@react-oauth/google";
-import logoGG from "@/assets/images/logoGG.svg";
 import { motion } from "framer-motion";
 import { IAccountLogin } from "@/interfaces/auth.interface";
 import Account from "@/layouts/Account";
@@ -19,8 +13,6 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [login, { isLoading: isLoginLoading }] = useLoginMutation();
-  const [continueWithGG, { isLoading: isContinueWithGGLoading }] =
-    useContinueWithGGMutation();
   const initialValues: IAccountLogin = {
     email: "",
     password: "",
@@ -44,32 +36,16 @@ const Login = () => {
       const res = await login(values).unwrap();
       if (res.status === "SUCCESS" && res.data) {
         dispatch(setCredentials({ accessToken: res.data.token }));
-        navigate(-1);
+        navigate("/");
       }
     } catch (error: any) {
       message.error(error.data.message);
     }
   };
 
-  //   const loginWithGG = useGoogleLogin({
-  //     onSuccess: async (tokenResponse) => {
-  //       console.log(tokenResponse.access_token || "");
-  //       const res = await continueWithGG({
-  //         accessToken: tokenResponse.access_token || "",
-  //       }).unwrap();
-  //       if (res.status === "SUCCESS" && res.data) {
-  //         dispatch(setCredentials({ accessToken: res.data.token }));
-  //         navigate("/");
-  //       }
-  //     },
-  //     onError: () => {
-  //       console.log("Login Failed");
-  //     },
-  //   });
-
   return (
     <Account>
-      <Spin spinning={isLoginLoading || isContinueWithGGLoading}>
+      <Spin spinning={isLoginLoading}>
         <Formik
           initialValues={initialValues}
           validate={validate}

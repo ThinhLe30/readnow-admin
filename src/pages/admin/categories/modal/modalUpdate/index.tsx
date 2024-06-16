@@ -2,11 +2,7 @@ import { Button, Form, Input, Spin } from "antd";
 import useServerMessage from "@/hooks/useServerMessage";
 import { IModal } from "@/interfaces/modal.interface";
 import Title from "@/components/Modal/Title";
-import {
-  useCreateCategoryMutation,
-  useUpdateCategoryMutation,
-} from "@/redux/services/categories/categories.service";
-import { ICreateCategoryRequest } from "@/interfaces/category.interface";
+import { useUpdateCategoryMutation } from "@/redux/services/categories/categories.service";
 
 const ModalUpdate = (props: IModal) => {
   const { title, data: category } = props;
@@ -17,9 +13,6 @@ const ModalUpdate = (props: IModal) => {
   useServerMessage({ data: data!, error: error });
 
   const onFinish = async (values: any) => {
-    const body: ICreateCategoryRequest = {
-      name: values.name,
-    };
     await updateCategoy({ name: values.name, id });
   };
 
