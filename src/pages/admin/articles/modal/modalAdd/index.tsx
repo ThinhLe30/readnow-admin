@@ -7,6 +7,7 @@ import { AiOutlineUpload } from "react-icons/ai";
 import { useGetCategoriesQuery } from "@/redux/services/categories/categories.service";
 import { useCreateArticleMutation } from "@/redux/services/articles/article.service";
 import useServerMessage from "@/hooks/useServerMessage";
+
 const { TextArea } = Input;
 const ModalAdd = (props: IModal) => {
   const { title } = props;
@@ -71,7 +72,7 @@ const ModalAdd = (props: IModal) => {
           rules={[{ required: true, message: "Please upload image!" }]}
         >
           <Upload
-            action="https://run.mocky.io/v3/3f3dc1c7-6e80-4851-9394-74c2d97f8da7"
+            action="https://run.mocky.io/v3/8e427baf-1e13-482a-b198-c5b55b7d8ae4"
             listType="picture"
             maxCount={1}
             accept="image/*"
@@ -86,9 +87,10 @@ const ModalAdd = (props: IModal) => {
         </Form.Item>
         <Form.Item className="w-full" name="publishedAt">
           <DatePicker
-            format="YYYY-MM-DD"
+            format="YYYY-MM-DD HH:mm:ss"
             style={{ width: "100%" }}
             placeholder={"Published At"}
+            showTime={{ use12Hours: true }}
           />
         </Form.Item>
         <Form.Item

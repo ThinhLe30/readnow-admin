@@ -14,7 +14,7 @@ import TextEditor from "../../TextEditor";
 import { AiOutlineUpload } from "react-icons/ai";
 import { useGetCategoriesQuery } from "@/redux/services/categories/categories.service";
 import { normFile } from "@/utils/helpers";
-import moment from "moment";
+import moment from "moment-timezone";
 import { useUpdateArticleMutation } from "@/redux/services/articles/article.service";
 import useServerMessage from "@/hooks/useServerMessage";
 
@@ -49,9 +49,8 @@ const ModalUpdate = (props: IModal) => {
     }
 
     if (values.publishedAt) {
-      values.publishedAt = moment(values.publishedAt).format(
-        "YYYY-MM-DD HH:mm:ss"
-      );
+      values.publishedAt = values.publishedAt.format("YYYY-MM-DD HH:mm:ss");
+      console.log(values.publishedAt);
       formData.append("publishedAt", values.publishedAt);
     }
     await updateArticle({ id: article.id!, body: formData });
@@ -71,7 +70,7 @@ const ModalUpdate = (props: IModal) => {
           author: article.author,
           title: article.title,
           description: article.description,
-          publishedAt: moment(article.publishedAt),
+          publishedAt: moment(article.publishedAt).utc(),
           summary: article.summary,
         }}
       >
@@ -116,7 +115,7 @@ const ModalUpdate = (props: IModal) => {
           getValueFromEvent={normFile}
         >
           <Upload
-            action="https://run.mocky.io/v3/3f3dc1c7-6e80-4851-9394-74c2d97f8da7"
+            action="https://run.mocky.io/v3/8e427baf-1e13-482a-b198-c5b55b7d8ae4"
             listType="picture"
             maxCount={1}
             accept="image/*"
@@ -132,9 +131,10 @@ const ModalUpdate = (props: IModal) => {
         </Form.Item>
         <Form.Item className="w-full" name="publishedAt">
           <DatePicker
-            format="YYYY-MM-DD"
+            format="YYYY-MM-DD HH:mm:ss"
             style={{ width: "100%" }}
             placeholder={"Published At"}
+            showTime={{ use12Hours: true }}
           />
         </Form.Item>
         <Form.Item className="w-full" name="categoryID">

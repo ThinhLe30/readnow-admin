@@ -1,7 +1,5 @@
 /** File */
 
-import moment from "moment";
-
 export const normFile = (e: any) => {
   if (Array.isArray(e)) {
     return e;
@@ -32,9 +30,7 @@ export const createArticleFormData = (values: any) => {
   formData.append("categoryID", values.categoryID);
   formData.append("image", values.image[0].originFileObj);
   if (values.publishedAt) {
-    values.publishedAt = moment(values.publishedAt).format(
-      "YYYY-MM-DD HH:mm:ss"
-    );
+    values.publishedAt = values.publishedAt.format("YYYY-MM-DD HH:mm:ss");
     formData.append("publishedAt", values.publishedAt);
   }
   return formData;
