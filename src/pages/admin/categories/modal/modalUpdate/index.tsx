@@ -22,12 +22,13 @@ const ModalUpdate = (props: IModal) => {
       <Form
         onFinish={onFinish}
         labelCol={{ span: 4 }}
-        wrapperCol={{ span: 14 }}
-        layout="horizontal"
+        wrapperCol={{ span: 100 }}
+        layout="vertical"
         className="flex w-full flex-col items-center gap-2"
         initialValues={{ name: name }}
       >
         <Form.Item
+          label="Name"
           className="w-full"
           name="name"
           rules={[

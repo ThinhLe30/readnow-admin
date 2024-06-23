@@ -60,7 +60,7 @@ const ModalUpdate = (props: IModal) => {
     <Spin spinning={isLoading}>
       <Title>{title}</Title>
       <Form
-        labelCol={{ span: 4 }}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 100 }}
         onFinish={onFinish}
         layout="vertical"
@@ -74,18 +74,19 @@ const ModalUpdate = (props: IModal) => {
           summary: article.summary,
         }}
       >
-        <Form.Item className="w-full" name="summary">
-          <Input placeholder="Author" disabled={true} />
+        <Form.Item className="w-full" name="summary" label="Summary">
+          <Input placeholder="Summary" disabled={true} />
         </Form.Item>
         <Form.Item
+          label="Author"
           className="w-full"
           name="author"
           rules={[{ required: true, message: "Please input author!" }]}
         >
           <Input placeholder="Author" />
         </Form.Item>
-
         <Form.Item
+          label="Title"
           className="w-full"
           name="title"
           rules={[{ required: true, message: "Please input title!" }]}
@@ -93,13 +94,14 @@ const ModalUpdate = (props: IModal) => {
           <TextArea placeholder="Title" rows={2} />
         </Form.Item>
         <Form.Item
+          label="Description"
           className="w-full"
           name="description"
           rules={[{ required: true, message: "Please input description!" }]}
         >
           <TextArea placeholder="Description" rows={4} />
         </Form.Item>
-
+        <div className="mb-2">Content</div>
         <TextEditor
           placeholder={"Content of article..."}
           value={content}
@@ -109,6 +111,7 @@ const ModalUpdate = (props: IModal) => {
         />
         <br />
         <Form.Item
+          label="Upload Image"
           className="w-full"
           name="image"
           valuePropName="fileList"
@@ -129,7 +132,11 @@ const ModalUpdate = (props: IModal) => {
             </Button>
           </Upload>
         </Form.Item>
-        <Form.Item className="w-full" name="publishedAt">
+        <Form.Item
+          className="w-full"
+          name="publishedAt"
+          label="Publication Date"
+        >
           <DatePicker
             format="YYYY-MM-DD HH:mm:ss"
             style={{ width: "100%" }}
@@ -137,7 +144,7 @@ const ModalUpdate = (props: IModal) => {
             showTime={{ use12Hours: true }}
           />
         </Form.Item>
-        <Form.Item className="w-full" name="categoryID">
+        <Form.Item className="w-full" name="categoryID" label="Category">
           <Select
             placeholder={"Select Category"}
             value={article.category.id}

@@ -15,16 +15,6 @@ const TableManageArticle = () => {
 
   const columns: ColumnsType<IUser> = [
     {
-      title: <span className=" font-bold">Index</span>,
-      align: "center" as AlignType,
-      dataIndex: "id",
-      key: "id",
-      width: "6%",
-      render: (_, __, index) => (
-        <span className=" text-sm font-semibold">{index + 1}</span>
-      ),
-    },
-    {
       title: <span className="font-bold">Name</span>,
       key: "name",
       width: "18%",

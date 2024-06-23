@@ -7,14 +7,13 @@ import useServerMessage from "@/hooks/useServerMessage";
 const ModalAdd = (props: IModal) => {
   const { title } = props;
   const [createUser, { data, error, isLoading }] = useCreateUserMutation();
+  const [form] = Form.useForm();
   useServerMessage({ data: data!, error: error });
   const onFinish = async (values: any) => {
-    console.log(values);
     const formData = new FormData();
     formData.append("email", values.email);
     formData.append("name", values.name);
     formData.append("password", values.password);
-    console.log(formData);
     createUser(formData);
   };
 
@@ -22,13 +21,15 @@ const ModalAdd = (props: IModal) => {
     <Spin spinning={isLoading}>
       <Title>{title}</Title>
       <Form
-        labelCol={{ span: 4 }}
+        form={form}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 100 }}
         onFinish={onFinish}
         layout="vertical"
         className=""
       >
         <Form.Item
+          label="Email"
           className="w-full"
           name="email"
           rules={[{ required: true, message: "Please input email!" }]}
@@ -36,6 +37,7 @@ const ModalAdd = (props: IModal) => {
           <Input placeholder="Email" />
         </Form.Item>
         <Form.Item
+          label="Name"
           className="w-full"
           name="name"
           rules={[{ required: true, message: "Please input name!" }]}
@@ -43,6 +45,7 @@ const ModalAdd = (props: IModal) => {
           <Input placeholder="Name" />
         </Form.Item>
         <Form.Item
+          label="Password"
           className="w-full"
           name="password"
           rules={[{ required: true, message: "Please input password!" }]}
@@ -50,9 +53,21 @@ const ModalAdd = (props: IModal) => {
           <Password placeholder="Password" />
         </Form.Item>
         <Form.Item
+          label="Re-Password"
           className="w-full"
           name="rePassword"
-          rules={[{ required: true, message: "Please input re-password!" }]}
+          rules={[
+            { required: true, message: "Please input re-password!" },
+            {
+              validator: async (_, value) => {
+                if (value !== form.getFieldValue("password")) {
+                  throw new Error(
+                    "The two passwords that you entered do not match!"
+                  );
+                }
+              },
+            },
+          ]}
         >
           <Password placeholder="Re-Password" />
         </Form.Item>
@@ -61,7 +76,7 @@ const ModalAdd = (props: IModal) => {
           <Button
             type="primary"
             htmlType="submit"
-            className="h-10 bg-primary text-white"
+            className="h-10 bg-primary text-white mt-5"
           >
             Save
           </Button>

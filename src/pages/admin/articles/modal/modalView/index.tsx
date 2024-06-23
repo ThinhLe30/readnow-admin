@@ -4,6 +4,7 @@ import ReactHtmlParser from "react-html-parser";
 const { Title, Paragraph, Text } = Typography;
 
 import "./style.css";
+import moment from "moment";
 const ModalView = (props: IModal) => {
   const { title, data: article } = props;
   console.log(title);
@@ -34,7 +35,8 @@ const ModalView = (props: IModal) => {
         Author: {article.author} <br />
       </Text>
       <Text strong>
-        Publication at: {article.publishedAt}
+        Publication at:{" "}
+        {moment(article.publishedAt).format("YYYY-MM-DD HH:mm:ss")}
         {/* {moment(article.publishedAt).format("YYYY-MM-DD HH:mm:ss")} */}
       </Text>
     </Typography>

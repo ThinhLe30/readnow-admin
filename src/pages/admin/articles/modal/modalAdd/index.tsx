@@ -24,7 +24,7 @@ const ModalAdd = (props: IModal) => {
     <Spin spinning={isLoading}>
       <Title>{title}</Title>
       <Form
-        labelCol={{ span: 4 }}
+        labelCol={{ span: 8 }}
         wrapperCol={{ span: 100 }}
         onFinish={onFinish}
         layout="vertical"
@@ -32,6 +32,7 @@ const ModalAdd = (props: IModal) => {
         className=""
       >
         <Form.Item
+          label="Author"
           className="w-full"
           name="author"
           rules={[{ required: true, message: "Please input author!" }]}
@@ -39,6 +40,7 @@ const ModalAdd = (props: IModal) => {
           <Input placeholder="Author" />
         </Form.Item>
         <Form.Item
+          label="Title"
           className="w-full"
           name="title"
           rules={[{ required: true, message: "Please input title!" }]}
@@ -46,6 +48,7 @@ const ModalAdd = (props: IModal) => {
           <TextArea placeholder="Title" rows={2} />
         </Form.Item>
         <Form.Item
+          label="Description"
           className="w-full"
           name="description"
           rules={[{ required: true, message: "Please input description!" }]}
@@ -53,6 +56,7 @@ const ModalAdd = (props: IModal) => {
           <TextArea placeholder="Description" rows={4} />
         </Form.Item>
         <Form.Item
+          label="Content"
           rules={[{ required: true, message: "Please input content!" }]}
           className="w-full"
           name="content"
@@ -65,6 +69,7 @@ const ModalAdd = (props: IModal) => {
         </Form.Item>
 
         <Form.Item
+          label="Upload Image"
           className="w-full"
           name="image"
           valuePropName="fileList"
@@ -85,7 +90,11 @@ const ModalAdd = (props: IModal) => {
             </Button>
           </Upload>
         </Form.Item>
-        <Form.Item className="w-full" name="publishedAt">
+        <Form.Item
+          className="w-full"
+          name="publishedAt"
+          label="Publication Date"
+        >
           <DatePicker
             format="YYYY-MM-DD HH:mm:ss"
             style={{ width: "100%" }}
@@ -96,6 +105,7 @@ const ModalAdd = (props: IModal) => {
         <Form.Item
           className="w-full"
           name="categoryID"
+          label="Category"
           rules={[{ required: true, message: "Please select category!" }]}
         >
           <Select

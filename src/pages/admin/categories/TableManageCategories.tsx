@@ -15,20 +15,21 @@ const TableManageCategories = () => {
   const getMenuActions = useMenuActions();
 
   const columns: ColumnsType<ICategory> = [
-    {
-      title: <span className=" font-bold">Index</span>,
-      align: "center" as AlignType,
-      dataIndex: "id",
-      key: "id",
-      width: "8%",
-      render: (_, __, index) => (
-        <span className=" text-sm font-semibold">{index + 1}</span>
-      ),
-    },
+    // {
+    //   title: <span className=" font-bold">Index</span>,
+    //   align: "center" as AlignType,
+    //   dataIndex: "id",
+    //   key: "id",
+    //   width: "8%",
+    //   render: (_, __, index) => (
+    //     <span className=" text-sm font-semibold">{index + 1}</span>
+    //   ),
+    // },
     {
       title: <span className="font-bold">Name</span>,
       key: "name",
       width: "30%",
+      sorter: (a, b) => a.name.length - b.name.length,
       render: (record: ICategory) => (
         <div className="flex items-center">
           <span className="ml-2 text-sm font-semibold">{record?.name}</span>
