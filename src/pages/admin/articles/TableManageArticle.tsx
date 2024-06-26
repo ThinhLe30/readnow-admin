@@ -58,7 +58,9 @@ const TableManageArticle = () => {
         <div className="flex items-center">
           <span className="ml-2 text-sm font-semibold">
             {/* <Moment format="YYYY/MM/DD">1976-04-19T12:59-0500</Moment> */}
-            {moment(record?.publishedAt).format("YYYY-MM-DD HH:mm:ss")}
+            {moment(record?.publishedAt)
+              .utc()
+              .format("YYYY-MM-DD HH:mm:ss")}
           </span>
         </div>
       ),
