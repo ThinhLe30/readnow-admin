@@ -118,7 +118,7 @@ const ModalUpdate = (props: IModal) => {
           getValueFromEvent={normFile}
         >
           <Upload
-            action="https://run.mocky.io/v3/8e427baf-1e13-482a-b198-c5b55b7d8ae4"
+            action="https://run.mocky.io/v3/146d6e28-1738-4649-9512-962e3ae590a7"
             listType="picture"
             maxCount={1}
             accept="image/*"
